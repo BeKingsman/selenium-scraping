@@ -11,10 +11,19 @@ with open('output.txt','w') as output:
     rows = match[0].findAll('tr')
     # match = match.findAll('div',{"class":"Ovx(a)"})
     # match = match.findAll('div',{"class":"Ovx(a)"})
+    r1 = rows[0].findAll('th')[0:6]
+    for col in r1:
+      # data =col.findAll('a')
+      output.write(col.text + ";")
+    output.write("\n")
+
     for row in rows[1:]:
-        data =row.findAll('td')
-        data =data[0].findAll('a')
-        print(data[0].text)
+        cols =row.findAll('td')[0:6]
+        for col in cols:
+          # data =col.findAll('a')
+          output.write(col.text + ";")
+        output.write("\n")
+        # print("")
 
 
 
