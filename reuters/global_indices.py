@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup as bsoup
 from selenium import webdriver
 
-with open('output.txt','w') as output:
+with open('output.csv','w') as output:
     browser = webdriver.Chrome()
     browser.get('https://www.reuters.com/markets/stocks')
     code = browser.page_source
@@ -24,7 +24,7 @@ with open('output.txt','w') as output:
     for row in rows:
         cols = row.findAll('td')[3]
         name = cols.find('span')
-        output.write(name.text + ";")
+        output.write(name.text[1:5] + ";")
     output.write("\n")
 
     browser.close()
